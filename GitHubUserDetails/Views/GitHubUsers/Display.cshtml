@@ -1,0 +1,56 @@
+﻿@model GitHubUserDetails.Models.GitHubUserDisplayInformation
+
+
+@if (Model == null)
+{
+    <h2>No data available. Go to home page.</h2>
+}
+else if (Model.Empty)
+{
+    <h2>User does not exist</h2>
+}
+else
+{
+<p style="padding-top:50px"></p>
+<table border="1" style="border-style:solid; padding-top:25px">
+    <tr id="DisplayDetailsFrom">
+        @using (Html.BeginForm("UserInfo", "GitHubUsers", FormMethod.Post))
+        {
+        <tr>
+            <td>
+                <span style="font-weight:bold">@Html.DisplayNameFor(model => model.UserName)</span>
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.UserName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span style="font-weight:bold">@Html.DisplayNameFor(model => model.Location)</span>
+</td>
+            <td>
+                @Html.DisplayFor(model => model.Location)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span style="font-weight:bold">@Html.DisplayNameFor(model => model.Avatar)</span>
+</td>
+            <td>
+                @(String.IsNullOrEmpty(Model.Avatar))? <b>"No Avatar available"</b>:<img src="@Url.Content(Model.Avatar)" alt="IMAGES" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span style="font-weight:bold">@Html.DisplayNameFor(model => model.Repos)</span>
+</td>
+            <td>
+                @foreach (var repo in Model.Repos)
+                {
+                    <div>@repo.ToString()</div>
+                }
+            </td>
+        </tr>
+        }
+    </table>
+}

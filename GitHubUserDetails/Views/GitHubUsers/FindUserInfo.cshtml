@@ -1,0 +1,21 @@
+﻿@model GitHubUserDetails.Models.GitHubUser
+
+<p style="padding-top:50px"></p>
+<table>
+    <tr id="UserNameForm">
+        @using (Html.BeginForm("UserInfo", "GitHubUsers", FormMethod.Post))
+        {
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.GitHubUserName)
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.GitHubUserName)
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Submit" /></td>
+            </tr>
+        }
+</table>
