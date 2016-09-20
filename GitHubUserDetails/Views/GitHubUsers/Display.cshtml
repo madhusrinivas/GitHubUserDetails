@@ -37,7 +37,14 @@ else
                 <span style="font-weight:bold">@Html.DisplayNameFor(model => model.Avatar)</span>
 </td>
             <td>
-                @(String.IsNullOrEmpty(Model.Avatar))? <b>"No Avatar available"</b>:<img src="@Url.Content(Model.Avatar)" alt="IMAGES" />
+                @if (String.IsNullOrEmpty(Model.Avatar))
+                { 
+                    <b>"No Avatar available"</b>
+                }
+                else
+                {
+                    <img src="@Url.Content(Model.Avatar)" alt="IMAGES" />
+                }
             </td>
         </tr>
         <tr>
