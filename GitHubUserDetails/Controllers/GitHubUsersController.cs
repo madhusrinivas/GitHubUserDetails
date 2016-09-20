@@ -104,14 +104,10 @@ namespace GitHubUserDetails.Controllers
                     }
                 }
                 if (repoList.Count > 0)
-                {
-                    arrRepoNames = repoList.OrderByDescending(o => o.StargazeCount).Take(5).Select(o => o.RepoName).ToArray<string>();
-                    objDispInfo.Repos = arrRepoNames;
-                }
+                { arrRepoNames = repoList.OrderByDescending(o => o.StargazeCount).Take(5).Select(o => o.RepoName).ToArray<string>(); }
                 else
-                {
-                    arrRepoNames = new string[1] { "No repository information available." };
-                }
+                { arrRepoNames = new string[1] { "No repository information available." }; }
+                objDispInfo.Repos = arrRepoNames;
             }
             catch (WebException we)
             {
